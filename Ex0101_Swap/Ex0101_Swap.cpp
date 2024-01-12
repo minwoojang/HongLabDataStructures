@@ -2,28 +2,44 @@
 
 using namespace std;
 
-/*
+
 int MySwapValue(int i, int j)
 {
 	// TODO:
+	int temp = i;
+	j = i;
+	i = temp;
 
-	return ? ;
+	return 0;
 }
 
 void MySwapPtr(int* i, int* j)
 {
+	int temp = *i;
+	*i = *j;
+	*j = temp;
 	// TODO:
 }
 
 void MySwapRef(int& i, int& j)
 {
+	int temp = i;
+	i = j;
+	j = temp;
 	// TODO:
 }
-*/
 
-bool CheckSorted(int a, int b)
+
+void myswap(int& a, int& b)
 {
-	return false;
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+bool CheckSorted(int& a, int& b)
+{
+	return (a <= b);
 }
 
 int main()
@@ -36,6 +52,9 @@ int main()
 		cout << a << " " << b << endl;
 
 		// TODO:
+		int temp = a;
+		a = b;
+		b = temp;
 
 		cout << a << " " << b << endl;
 	}
@@ -48,6 +67,8 @@ int main()
 		cout << arr[0] << " " << arr[1] << endl;
 
 		// TODO:
+		if (arr[0] > arr[1])
+			MySwapRef(arr[0], arr[1]);
 
 		cout << arr[0] << " " << arr[1] << endl;
 	}
@@ -57,7 +78,24 @@ int main()
 	{
 		int arr[2];
 
-		// TODO:
+		for (int j = 0; j < 5; j++)
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				arr[0] = i;
+				arr[1] = j;
+
+				if (arr[0] > arr[1])
+				{
+					myswap(arr[0], arr[1]);
+				}
+
+				cout << boolalpha;
+				cout << arr[0] << " " << arr[1] << " " <<
+					CheckSorted(arr[0], arr[1]) << endl;
+
+			}
+		}
 	}
 
 	return 0;
