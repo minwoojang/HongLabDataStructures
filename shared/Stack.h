@@ -29,12 +29,13 @@ public:
 
 	bool IsEmpty() const
 	{
-		return false; // TODO:
+		//return false; // TODO:
+		return (top_ == -1);
 	}
 
 	int Size() const
 	{
-		return 0; //TODO:
+		return (top_ + 1);
 	}
 
 	void Print()
@@ -57,7 +58,21 @@ public:
 	// Insert item into the TOP of the stack
 	void Push(const T& item)
 	{
-		// TODO: 필요하면 리사이즈 
+		// TODO: 필요하면 리사이즈
+		/*if (capacity_ > top_)
+		{
+			stack_[++top_] = item;
+		}
+		else
+		{
+			Resize(capacity_ * 2);
+			stack_[++top_] = item;
+		}*/
+
+		if (top_ == capacity_ - 1)
+			Resize(capacity_ * 2);
+
+		stack_[++top_] = item;
 
 		// TODO:
 	}
@@ -66,6 +81,10 @@ public:
 	void Pop()
 	{
 		assert(!IsEmpty());
+
+		--top_;
+
+		//top_--; <- 답
 
 		// TODO:
 	}
